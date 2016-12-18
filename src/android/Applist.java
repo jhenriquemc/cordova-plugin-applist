@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.ResolveInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 
@@ -119,6 +120,16 @@ public class Applist extends CordovaPlugin {
                                   info.put("name",packageInfo.loadLabel(pm));
                                   String img_name =  "/Applist/"+ packageInfo.packageName +".png";
                                   info.put("img",path+img_name);
+                                
+                                  try {
+                                      PackageInfo pInfo = pm.getPackageInfo(packageInfo.packageName, 0);
+                                      if (pInfo != null) {
+                                          info.put("versionName", pInfo.versionName);
+                                      }
+                                  } catch (PackageManager.NameNotFoundException e) {
+                                      //...
+                                  }
+                                
                                   //cheak exist  or not
                                   File  cheakfile  = new File( path + img_name );
                                   if(  !cheakfile.exists()  )
@@ -194,6 +205,16 @@ public class Applist extends CordovaPlugin {
                             info.put("name",packageInfo.loadLabel(pm));
                             String img_name =  "/Applist/"+ packageInfo.packageName +".png";
                             info.put("img",path+img_name);
+                            
+                            try {
+                                PackageInfo pInfo = pm.getPackageInfo(packageInfo.packageName, 0);
+                                if (pInfo != null) {
+                                    info.put("versionName", pInfo.versionName);
+                                }
+                            } catch (PackageManager.NameNotFoundException e) {
+                                //...
+                            }
+                            
                             //cheak exist  or not
                             File  cheakfile  = new File( path + img_name );
                             if(  !cheakfile.exists()  )

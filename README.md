@@ -4,7 +4,7 @@ Fork of https://github.com/jmrezayi2/Applist
 
 ##Usage:
         
-        var success = function(app_list) { alert(JSON.stringify((app_list)); };
+        var success = function(app_list) { alert(JSON.stringify((app_list))); };
         var error = function(err) { alert("Oopsie! " + err); };
         Applist.getApps(success, error) // get installed apps
         Applist.getAllApps(success, error) // get all apps (including system apps)
@@ -16,6 +16,7 @@ JSONObject info:
 * app_list.info.id is app id (package name)
 * app_list.info.name is app name 
 * app_list.info.img is app-logo cache app cache dir
+* app_list.info.versionName is app version name
 
 
 ##To Do:
